@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+  <fieldset
+    name="ticket">
+    <field
+      name="id"
+      type="text"
+      filter="int"
+      default=""
+      label="COM_INVOICES_FORM_LBL_INVOICE_ID"
+      class="readonly input-mini"
+      labelClass="control-label"
+      description="JGLOBAL_FIELD_ID_DESC"
+      readonly="true"
+      
+    />
+    <field 
+      name="title"
+      type="text"
+      labelClass="control-label"
+      description=""
+      fiter="string"
+      required="true"
+      label="Ticket title"
+    />
+    <field 
+      name="description"
+      type="textarea"
+      cols="10"
+      rows="10"
+      filter="JComponentHelper::filterText"
+      required="true"
+      label="Description"
+      class="input-xxlarge"
+      labelClass="control-label"
+      
+    />
+    <field 
+      name="note"
+      type="textarea"
+      cols="8"
+      rows="4"
+      filter="JComponentHelper::filterText"
+      label="Note"
+      class="input-xlarge"
+      labelClass="control-label"
+      default=""
+    />
+  
+    <field 
+      name="state"
+      type="list"
+      required="true"
+      label="State"
+      filter="int"
+      labelClass="control-label"
+      description="">
+      <option value="">JSELECT</option>
+      <option value="1">COM_TICKETS_OPEN</option>
+      <option value="0">COM_TICKETS_CLOSED</option>
+      <option value="2">COM_TICKETS_TESTING_FILTER</option>
+      <option value="3">COM_TICKETS_PENDING_FILTER</option>
+    </field>
+    <field 
+      name="severity"
+      required="true"
+      type="list"
+      labelClass="control-label"
+      label="Severity"
+      filter="int"
+      default=""
+      description="">
+      <option value="">JSELECT</option>
+      <option value="1">COM_TICKETS_CRITICAL</option>
+      <option value="2">COM_TICKETS_HIGH</option>
+      <option value="3">COM_TICKETS_MEDIUM</option>
+      <option value="4">COM_TICKETS_LOW</option>
+      <option value="5">COM_TICKETS_MINOR</option>
+    </field>     
+    <field
+      type="category"
+      name="area"
+      label="Project area"
+      labelClass="control-label"
+      filter="int"
+      required="true"
+      default=""
+      extension="com_tickets"
+      class="required">
+      <option value="">JSELECT</option>
+
+    </field>  
+    <field
+      name="assigned_to"
+      type="user"
+      labelClass="control-label"
+      label="Assigned to"
+      description=""
+      required="true"
+      class="input-small"
+      filter="int"
+      default="1"
+    />
+    <field
+      name="created_by"
+      type="user"
+      labelClass="control-label"
+      label="Created by"
+      description=""
+      class="input-small"
+      filter="int"
+      readonly="true"
+    />    
+     
+
+    
+  </fieldset>
+
+</form>
