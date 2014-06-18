@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 jimport('joomla.application.component.modellist');
 
 /**
- * Methods supporting a list of Invoices records.
+ * Methods supporting a list of tickets
  */
 class TicketsModelTickets extends JModelList {
 
