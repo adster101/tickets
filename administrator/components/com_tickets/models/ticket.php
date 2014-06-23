@@ -82,6 +82,7 @@ class TicketsModelTicket extends JModelAdmin {
     $registry = new JRegistry;
     $note = array();
     $user = JFactory::getUser();
+    //var_dump($_FILES);die;
 
     $states = array('closed', 'open', 'testing', 'pending');
 

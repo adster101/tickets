@@ -17,9 +17,6 @@ class TicketsHelper {
 
   public static function addSubmenu($vName = '') {
     $user = JFactory::getUser();
-    JHtmlSidebar::addEntry(JText::_('COM_HELLOWORLD_SUBMENU_OWNERS_AREA_HOME'), '#');
-    JHtmlSidebar::addEntry(JText::_('COM_HELLOWORLD_SUBMENU_OWNERS_HOME'), 'index.php');
-    JHtmlSidebar::addEntry(JText::_('COM_TICKETS_TICKETS_SUBMENU_MENU'), '#');
     JHtmlSidebar::addEntry(JText::_('COM_TICKETS_TICKETS_SUBMENU_TICKETS'), 'index.php?option=com_tickets&view=tickets', $vName == 'tickets');
     JHtmlSidebar::addEntry(JText::_('COM_TICKETS_TICKETS_SUBMENU_TICKET_TYPE'), 'index.php?option=com_categories&extension=com_tickets', $vName == 'categories');
   }
@@ -55,7 +52,7 @@ class TicketsHelper {
   public static function getSeverities() {
     // Build the filter options.
     $options = array();
-    $options[] = JHtml::_('select.option', '1', JText::_('COM_TICKETS_CRITICAL'));
+    $options[] = JHtml::_('select.option', '1', JText::_(' '));
     $options[] = JHtml::_('select.option', '2', JText::_('COM_TICKETS_HIGH'));
     $options[] = JHtml::_('select.option', '3', JText::_('COM_TICKETS_MEDIUM'));
     $options[] = JHtml::_('select.option', '4', JText::_('COM_TICKETS_LOW'));
