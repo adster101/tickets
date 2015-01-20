@@ -21,7 +21,11 @@ class TicketsTableTicket extends JTable {
    * @param JDatabase A database connector object
    */
   public function __construct(&$db) {
+	  
     parent::__construct('#__tickets', 'id', $db);
+	require_once('observers/ticket.php');
+    JTableObserverTicket::createObserver($this, array('typeAlias'=>'com_tickets.ticket'));
+
   }
 
   public function store($updateNulls = false) {

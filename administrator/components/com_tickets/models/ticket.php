@@ -9,24 +9,12 @@
  */
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.modelform');
+jimport('joomla.application.component.modeladmin');
 
 /**
  * Methods supporting a list of Invoices records.
  */
 class TicketsModelTicket extends JModelAdmin {
-
-  public function getItem($pk = null) {
-    if ($item = parent::getItem($pk)) {
-
-      // Decode any notes that have been saved against this issue
-      $registry = new JRegistry;
-      $registry->loadString($item->notes);
-      $item->notes = $registry->toArray();
-    }
-
-    return $item;
-  }
 
   /**
    * Returns a reference to the a Table object, always creating it.
@@ -76,49 +64,27 @@ class TicketsModelTicket extends JModelAdmin {
     return $data;
   }
 
-  public function save($data) {
-
-    $data['notes'] = array();
-    $registry = new JRegistry;
-    $note = array();
-    $user = JFactory::getUser();
-    //var_dump($_FILES);die;
-
-    $states = array('closed', 'open', 'testing', 'pending');
-
-    // Attempt to load the existing item
-    $item = $this->getItem($data['id']);
-
-    // Set the updated data and time
-    $data['date_updated'] = JFactory::getDate()->calendar('Y-m-d H:i:s');
-    
-    if (isset($data['note']) && !empty($data['note']) || $data['state'] != $item->state) {
-      // If we have an id and it's not empty
-      if (isset($data['id']) && !empty($data['id'])) {
-
-        // Decode any notes that have been saved against this issue
-        $data['notes'] = $item->notes;
-        
-        if ($data['state'] != $item->state) {
-          $note['user'] = $user->get('name');
-          $note['description'] = 'Status changed from ' . $states[$item->state] . ' to ' . $states[$data['state']];
-          $note['date'] = JFactory::getDate()->calendar('d-m-Y H:i:s');
-          $data['notes'][] = $note;
-        }
-
-        if (!empty($data['note'])) {
-          $note['user'] = $user->get('name');
-          $note['description'] = $data['note'];
-          $note['date'] = JFactory::getDate()->calendar('d-m-Y H:i:s');
-          $data['notes'][] = $note;
-        }
-        
-        $registry->loadArray($data['notes']);
-        $data['notes'] = (string) $registry;
-      }
-    }
-
-    return parent::save($data);
-  }
+	public function saveNotes ($notes = array(), $id) 
+	{
+	
+		if (empty($notes))
+		{
+			return true;
+		}
+	
+		foreach ($notes as $k => $note)
+		{
+			$table = $this->getTable('Note', 'TicketsTable');
+			$note['id'] = $id;
+			
+			$table->save($note);
+		}
+		
+		return true;
+		
+	}
+	
+   
+  
 
 }

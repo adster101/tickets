@@ -11,8 +11,8 @@
       fiter="string"
       required="true"
       class="input-xxlarge"
-      label="Ticket title"
-      hint="COM_TICKET_TICKET_TITLE"
+      label="COM_TICKET_TICKET_TITLE"
+      hint="COM_TICKET_TICKET_TITLE_HINT"
     />
     <field 
       name="description"
@@ -21,18 +21,14 @@
       rows="10"
       filter="JComponentHelper::filterText"
       required="true"
-      label="Description"
+      label="COM_TICKET_TICKET_DESCRIPTION"
       class="input-xxlarge"
       labelclass="control-label"
-      hint="COM_TICKET_TICKET_DESCRIPTION"
+      hint="COM_TICKET_TICKET_DESCRIPTION_HINT"
     />
-    <field 
-	  name="attachment"
-	  type="file"
-	  class="input-medium"
-	  label="COM_TICKET_TICKET_ATTACHMENT"
-	/>
+   
   </fieldset>
+
   <fieldset 
 	name="notes"
 	label="COM_TICKETS_TICKET_NOTES">
@@ -49,7 +45,7 @@
     />
 	</fieldset>
 	<fieldset 
-	  name="status"
+	  name="ticke-status"
 	  label="COM_TICKETS_TICKET_STATUS">
     <field 
       name="state"
@@ -123,7 +119,7 @@
       type="text"
       filter="int"
       default=""
-      label="COM_INVOICES_FORM_LBL_INVOICE_ID"
+      label="COM_TICKETS_TICKET_ID"
       class="readonly input-mini"
       labelclass="control-label"
       description="JGLOBAL_FIELD_ID_DESC"
@@ -132,6 +128,16 @@
      
 
     
+  </fieldset>
+  <fieldset 
+	name="attachments"
+	label="COM_TICKETS_TICKET_ATTACHMENTS">
+	 <field 
+	  name="attachment"
+	  type="media"
+	  class="input-medium"
+	  label="COM_TICKET_TICKET_ATTACHMENT"
+	/>
   </fieldset>
 
 </form>
